@@ -56,11 +56,11 @@ router.post('/taskDepartment', async (req,res)=>{
         }
     })
 
-    // get a task in a department
+    // get all in a department
     router.get('/departmentTasks/:departmentId', async(req, res)=>{
         const _id = req.params.departmentId
         try{
-            const task = Department.findById({_id}).populate('questions').exec()
+            const task = Department.findById({_id}).populate('tasks').exec()
             if(!task){
                 return res.status(200).send('no task in this department')
             }
